@@ -10,8 +10,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link href='https://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo|Architects+Daughter' rel='stylesheet'
-	      type='text/css'>
+	<!--<link href='https://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo|Architects+Daughter' rel='stylesheet'
+	      type='text/css'>-->
+	<link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
 	<!-- compiled CSS --><% styles.forEach( function ( file ) { %>
 	<link rel="stylesheet" type="text/css" href="<%= file %>?t=<%= timestamp %>"/>
 	<% }); %>
@@ -69,6 +70,7 @@
     <div id="div-chart">
     	<div class="container">
     		<h1>Chart</h1>
+    		<div highchart id="salaries" config="chartConfig" class="chart"></div>
     	</div>
     </div>
 
@@ -94,9 +96,9 @@
     </div>
 </div>
 
-<% scripts.forEach( function ( file ) { %>
-<script type="text/javascript" src="<%= file %>?t=<%= timestamp %>"></script>
-<% }); %>
+	<% scripts.forEach( function ( file ) { %>
+	<script type="text/javascript" src="<%= file %>?t=<%= timestamp %>"></script>
+	<% }); %>
 </div>
 
 </body>

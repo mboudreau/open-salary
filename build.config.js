@@ -70,7 +70,8 @@ module.exports = {
 		js: [
 			'vendor/angular/angular.js',
 			'vendor/angular-ui-router/release/angular-ui-router.js',
-			'vendor/satellizer/satellizer.js'
+			'vendor/satellizer/satellizer.js',
+			'vendor/highcharts-ng/dist/highcharts-ng.js'
 		],
 		css: [
 		],
