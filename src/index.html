@@ -9,8 +9,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link href='https://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo|Architects+Daughter' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo|Architects+Daughter' rel='stylesheet'
+	      type='text/css'>
 	<!-- compiled CSS --><% styles.forEach( function ( file ) { %>
 	<link rel="stylesheet" type="text/css" href="<%= file %>?t=<%= timestamp %>"/>
 	<% }); %>
@@ -21,84 +22,82 @@
 <body>
 <a name="#top"></a>
 
+<div id="ng-app" ng-app="open-salary-app">
+	<div id="main" ui-view>
 
-    <div class="header">
-      <div class="container">
-          <div class="login">
-          	<a href="#" class="btn"><h3>Login</h3></a>
-          </div>
-          <h1>Open Salary</h1>
-            <p>Women made $9.784 less than men</p>
-               <a href="#div-chart" class="learn-more"><span>Learn more...</span></a>
-             <div class="row">
-              <div class="col-md-12">
-               <form class="form-inline">
-                  <div id="searchField">
-                   <input type="text" class="form-control" id="FirstName" placeholder="Profession" max="150" style="width:400px">
-                   <a href="search"><i class="fa fa-search fa-2x"></i></a>
-                  </div>
-                </form>
-              </div>
-         	</div>   
-         </div>
-      </div>
-         
-    </div>
+		<div class="header">
+			<div class="container">
+				<div class="login">
+					<a href="#" class="btn"><h3>Login</h3></a>
+				</div>
+				<h1>Open Salary</h1>
 
-    <div class="jumbotron">
- 		<div class="container">
-			<div class="row"> 
-	       		<div class="col-md-4">
-	       			<h3>Equality</h3>
-	       			<p>something</p>
-	       			 
+				<p>Women made $9.784 less than men</p>
+				<a href="#div-chart" class="learn-more"><span>Learn more...</span></a>
+
+				<div class="row">
+					<div class="col-md-12">
+						<form class="form-inline">
+							<div id="searchField">
+								<input type="text" class="form-control" id="FirstName" placeholder="Profession"
+								       max="150" style="width:400px">
+								<a href="search"><i class="fa fa-search fa-2x"></i></a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="jumbotron">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<h3>Equality</h3>
+
+					<p>something</p>
+
 				</div>
 				<div class="col-md-4">
 					<h3>Diversity</h3>
+
 					<p>something</p>
 				</div>
 				<div class="col-md-4">
-				 	<h3>Open Mind</h3>
-				 	<p>something</p>
-				</div>
- 			</div>
- 		</div>
-    </div>
+					<h3>Open Mind</h3>
 
-    <div id="div-chart">
-    	<div class="container">
-    		<h1>Chart</h1>
-    	</div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <address>
-          <strong>Open Salary</strong>
-          <br/>
-          Melbourne, Australia
-          
-        </address>
-        <a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/email.svg"/></a>
-        <a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/fb.svg"/></a>
-        <a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/twitter.svg"/></a>
-      </div>
-    </div>
-
-<div id="ng-app" ng-app="open-salary-app">
-	<div id="main" ui-view>
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 text-center">
-
+					<p>something</p>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<% scripts.forEach( function ( file ) { %>
-		<script type="text/javascript" src="<%= file %>?t=<%= timestamp %>"></script>
-	<% }); %>
+	<div id="div-chart">
+		<div class="container">
+			<h1>Chart</h1>
+		</div>
+	</div>
+
+	<div class="footer">
+		<div class="container">
+			<address>
+				<strong>Open Salary</strong>
+				<br/>
+				Melbourne, Australia
+
+			</address>
+			<a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/email.svg"/></a>
+			<a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/fb.svg"/></a>
+			<a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/twitter.svg"/></a>
+		</div>
+	</div>
+</div>
+
+<% scripts.forEach( function ( file ) { %>
+<script type="text/javascript" src="<%= file %>?t=<%= timestamp %>"></script>
+<% }); %>
 </div>
 
 </body>
