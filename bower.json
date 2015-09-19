@@ -23,8 +23,6 @@
 	"dependencies": {
 		"angular": "~1.4.3",
 		"bootstrap": "~3.3.5",
-		"todomvc-common": "^1.0.0",
-		"todomvc-app-css": "^1.0.1",
 		"angular-ui-router": "~0.2.15",
 		"lesshat": "~3.0.2",
 		"angular-bootstrap": "https://github.com/angular-ui/bootstrap.git#0.13.2",

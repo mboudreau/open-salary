@@ -72,8 +72,6 @@ module.exports = {
 			'vendor/angular-ui-router/release/angular-ui-router.js'
 		],
 		css: [
-			'vendor/todomvc-common/base.css',
-			'vendor/todomvc-app-css/index.css'
 		],
 		assets: [
 		],
