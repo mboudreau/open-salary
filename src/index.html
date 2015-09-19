@@ -10,7 +10,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-
+	<link href='https://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo|Architects+Daughter' rel='stylesheet' type='text/css'>
 	<!-- compiled CSS --><% styles.forEach( function ( file ) { %>
 	<link rel="stylesheet" type="text/css" href="<%= file %>?t=<%= timestamp %>"/>
 	<% }); %>
@@ -20,6 +20,47 @@
 
 <body>
 <a name="#top"></a>
+
+
+    <div class="header">
+      <div class="container">
+          <h1>Open Salary</h1>
+            <p>Women made $9.784 less than men</p>
+             <div class="row">
+              <div class="col-md-12">
+               <form class="form-inline">
+                  <div>
+                   <input type="text" class="form-control" id="First Name" placeholder="Profession">
+                   <a ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                  </div>
+                </form>
+              </div>
+         </div>   
+      </div>
+         
+    </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h2>We <span>collect</span> salaries from people from all around Australia</h2>
+      </div>
+    </div>
+
+
+
+    <div class="footer">
+      <div class="container">
+        <address>
+          <strong>Open Salary</strong>
+          <br/>
+          Melbourne, Australia
+          
+        </address>
+        <a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/email.svg"/></a>
+        <a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/fb.svg"/></a>
+        <a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/twitter.svg"/></a>
+      </div>
+    </div>
 
 <div id="ng-app" ng-app="open-salary-app">
 	<div id="main" ui-view>
