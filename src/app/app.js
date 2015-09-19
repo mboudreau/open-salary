@@ -1,6 +1,6 @@
 /*global angular */
 
-angular.module('demo-app', ['ui.router', 'todo'])
+angular.module('open-salary-app', ['ui.router'])
 	.config(function($urlRouterProvider){
 		$urlRouterProvider.otherwise('/');
 	});
