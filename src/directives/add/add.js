@@ -1,6 +1,6 @@
 /*global angular */
 
-angular.module('verify', ['ui.router', 'satellizer', 'templates-directives'])
+angular.module('add', ['ui.router', 'satellizer', 'templates-directives'])
 	.config(function ($stateProvider, $authProvider) {
 
 		$authProvider.google({
@@ -10,12 +10,12 @@ angular.module('verify', ['ui.router', 'satellizer', 'templates-directives'])
 
 		// secret YTiA1TduxzCk0HY9Sdsy04uV
 
-		$stateProvider.state('verify', {
-			url: '/verify',
-			template: '<div verify></div>'
+		$stateProvider.state('add', {
+			url: '/add',
+			template: '<div add></div>'
 		});
 	})
-	.directive('verify', function ($auth, $location) {
+	.directive('add', function ($auth, $location) {
 		return {
 			restrict: 'AE',
 			scope: {
@@ -25,14 +25,6 @@ angular.module('verify', ['ui.router', 'satellizer', 'templates-directives'])
 				// Adding default class
 				// element.addClass('stat-card');
 
-				scope.authenticate = function(provider) {
-					$auth.authenticate(provider)
-						.then(function() {
-							$location.path('/add');
-						})
-						.catch(function(response) {
-						});
-				};
 			}
 		};
 	});
