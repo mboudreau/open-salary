@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo|Architects+Daughter' rel='stylesheet' type='text/css'>
 	<!-- compiled CSS --><% styles.forEach( function ( file ) { %>
 	<link rel="stylesheet" type="text/css" href="<%= file %>?t=<%= timestamp %>"/>
@@ -24,29 +24,52 @@
 
     <div class="header">
       <div class="container">
+          <div class="login">
+          	<a href="#" class="btn"><h3>Login</h3></a>
+          </div>
           <h1>Open Salary</h1>
             <p>Women made $9.784 less than men</p>
+               <a href="#div-chart" class="learn-more"><span>Learn more...</span></a>
              <div class="row">
               <div class="col-md-12">
                <form class="form-inline">
-                  <div>
-                   <input type="text" class="form-control" id="First Name" placeholder="Profession">
-                   <a ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                  <div id="searchField">
+                   <input type="text" class="form-control" id="FirstName" placeholder="Profession" max="150" style="width:400px">
+                   <a href="search"><i class="fa fa-search fa-2x"></i></a>
                   </div>
                 </form>
               </div>
-         </div>   
+         	</div>   
+         </div>
       </div>
          
     </div>
 
     <div class="jumbotron">
-      <div class="container">
-        <h2>We <span>collect</span> salaries from people from all around Australia</h2>
-      </div>
+ 		<div class="container">
+			<div class="row"> 
+	       		<div class="col-md-4">
+	       			<h3>Equality</h3>
+	       			<p>something</p>
+	       			 
+				</div>
+				<div class="col-md-4">
+					<h3>Diversity</h3>
+					<p>something</p>
+				</div>
+				<div class="col-md-4">
+				 	<h3>Open Mind</h3>
+				 	<p>something</p>
+				</div>
+ 			</div>
+ 		</div>
     </div>
 
-
+    <div id="div-chart">
+    	<div class="container">
+    		<h1>Chart</h1>
+    	</div>
+    </div>
 
     <div class="footer">
       <div class="container">
