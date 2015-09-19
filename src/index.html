@@ -10,8 +10,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link href='https://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo|Architects+Daughter' rel='stylesheet'
-	      type='text/css'>
+	<!--<link href='https://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo|Architects+Daughter' rel='stylesheet'
+	      type='text/css'>-->
+	<link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
 	<!-- compiled CSS --><% styles.forEach( function ( file ) { %>
 	<link rel="stylesheet" type="text/css" href="<%= file %>?t=<%= timestamp %>"/>
 	<% }); %>
@@ -49,55 +50,54 @@
 			</div>
 		</div>
 
-	</div>
+		<div class="jumbotron">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<h3>Equality</h3>
 
-	<div class="jumbotron">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
-					<h3>Equality</h3>
+						<p>something</p>
 
-					<p>something</p>
+					</div>
+					<div class="col-md-4">
+						<h3>Diversity</h3>
 
+						<p>something</p>
+					</div>
+					<div class="col-md-4">
+						<h3>Open Mind</h3>
+
+						<p>something</p>
+					</div>
 				</div>
-				<div class="col-md-4">
-					<h3>Diversity</h3>
+			</div>
+		</div>
 
-					<p>something</p>
-				</div>
-				<div class="col-md-4">
-					<h3>Open Mind</h3>
+		<div id="div-chart">
+			<div class="container">
+				<h1>Chart</h1>
+				<div highchart id="salaries" config="chartConfig" class="chart"></div>
+			</div>
+		</div>
 
-					<p>something</p>
-				</div>
+		<div class="footer">
+			<div class="container">
+				<address>
+					<strong>Open Salary</strong>
+					<br/>
+					Melbourne, Australia
+
+				</address>
+				<a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/email.svg"/></a>
+				<a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/fb.svg"/></a>
+				<a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/twitter.svg"/></a>
 			</div>
 		</div>
 	</div>
 
-	<div id="div-chart">
-		<div class="container">
-			<h1>Chart</h1>
-		</div>
-	</div>
-
-	<div class="footer">
-		<div class="container">
-			<address>
-				<strong>Open Salary</strong>
-				<br/>
-				Melbourne, Australia
-
-			</address>
-			<a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/email.svg"/></a>
-			<a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/fb.svg"/></a>
-			<a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/twitter.svg"/></a>
-		</div>
-	</div>
-</div>
-
-<% scripts.forEach( function ( file ) { %>
-<script type="text/javascript" src="<%= file %>?t=<%= timestamp %>"></script>
-<% }); %>
+	<% scripts.forEach( function ( file ) { %>
+	<script type="text/javascript" src="<%= file %>?t=<%= timestamp %>"></script>
+	<% }); %>
 </div>
 
 </body>
