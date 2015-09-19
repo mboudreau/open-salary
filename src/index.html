@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<base href="/<%= name %>/">
+	<title><%= name.charAt(0).toUpperCase() + name.slice(1) %></title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+
+	<!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+	<link rel="stylesheet" type="text/css" href="<%= file %>?t=<%= timestamp %>"/>
+	<% }); %>
+
+
+</head>
+
+<body>
+<a name="#top"></a>
+
+<div id="ng-app" ng-app="demo-app">
+	<div id="main" ui-view>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 text-center">
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<% scripts.forEach( function ( file ) { %>
+		<script type="text/javascript" src="<%= file %>?t=<%= timestamp %>"></script>
+	<% }); %>
+</div>
+
+</body>
+</html>

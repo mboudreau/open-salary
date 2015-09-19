@@ -1,0 +1,13 @@
+*.sw*
+*~
+build/
+release/
+dist/
+node_modules/
+vendor/
+log/
+.idea
+*.iml
+.bundle/
+bin/
+.tmp
