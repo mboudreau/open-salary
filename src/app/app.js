@@ -56,6 +56,10 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 					case 'ethnicity':
 						title = 'Average Salary per Ethnicity';
 						data =  getEthnicAverage(responseData);
+						break
+					case 'profession':
+						title = 'Average Salary per Profession';
+						data =  getProfessionAverage(responseData);
 				}
 				$scope.chartConfig = angular.extend(chartConfig, {
 					loading: false,
@@ -187,6 +191,47 @@ function getEthnicAverage(data) {
 					style: {
 							fontSize: '13px',
 							fontFamily: 'Open Sans, sans-serif'
+					}
+			}
+		})
+	}
+
+	return series;
+}
+
+function getProfessionAverage(data) {
+	var professions = {};
+
+	for(var i = 0, len = data.length; i<len; i++) {
+		var answer = data[i];
+			if(answer.YearSalary && answer.Profession.length !== 0) {
+				if(!professions[answer.Profession]) {
+					professions[answer.Profession] = {
+						total:0,
+						count:0
+					};
+				}
+
+				professions[answer.Profession].total = professions[answer.Profession].total + parseInt(answer.YearSalary);
+				professions[answer.Profession].count = professions[answer.Profession].count + 1;
+			}
+	}
+
+	var series = [];
+
+	for(var key in professions) {
+		series.push({name: key,
+			data: [Math.floor(professions[key].total/professions[key].count)],
+			dataLabels: {
+					enabled: true,
+					// rotation: -90,
+					color: '#FFFFFF',
+					align: 'right',
+					format: '{point.y:.0f}',
+					y: 30, // 10 pixels down from the top
+					style: {
+							fontSize: '13px',
+							fontFamily: 'Verdana, sans-serif'
 					}
 			}
 		})
