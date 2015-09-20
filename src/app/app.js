@@ -14,7 +14,7 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 
 		$scope.chartOption = 1;
 
-		var chartConfig = {};
+		var chartConfig = {}, responseData;
 
 		$scope.generateChart = function(option) {
 			chartConfig = {
@@ -77,62 +77,43 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 				}
 			};
 
-			$http.get('http://localhost:8000').
-				then(function (response) {
-					var data = response.data;
-					// TODO: calculate data here
-					$scope.chartConfig = angular.extend(chartConfig, {
-						loading: false,
-						//series: getGenderAverage(data)
-						series: getChartData(data, $scope.chartOption)
-					});
-				}, function (error) {
-
-<<<<<<< HEAD
-=======
-			tooltip: {
-				formatter: function() {
-					return '<b>'+ this.x +'</b><br/>'+
-						this.series.name +': '+ this.y +'<br/>'+
-						'Diff: '+ Math.abs(this.point.stackTotal-this.y);
-				}
-			},
-			//Whether to use HighStocks instead of HighCharts (optional). Defaults to false.
-			//function (optional)
-			func: function (chart) {
-				//setup some logic for the chart
-			}
-		};
-
-		$scope.chartConfig = chartConfig;
-
-		var ethnicChart, genderChart;
-
-		$http.get('http://localhost:8000').
-			then(function (response) {
-				var data = response.data;
-				var gender = getGenderAverage(data);
-
-				var maleAvg = gender[1].data[0], femaleAvg = gender[0].data[0];
-				$scope.difference = Math.abs(maleAvg - femaleAvg);
-				$scope.percent = Math.floor(((maleAvg/femaleAvg)-1)*10000)/100;
-
-				var professions = [];
-				for(var i = 0, len = data.length; i<len; i++) {
-					var p = data[i].Profession;
-					if(p && p.length !== 0) {
-						professions.push(p);
-					}
-				}
-				$scope.professions = professions;
-
+			function setConfig(data) {
 				$scope.chartConfig = angular.extend(chartConfig, {
 					loading: false,
 					//series: getGenderAverage(data)
-					series: getEthnicAverage(data)
->>>>>>> 9e3f2a59485f51d12e4a2173c0025f03a3255561
+					series: getChartData(data, $scope.chartOption)
 				});
-		}
+			}
+
+			if(!responseData) {
+				$http.get('http://localhost:8000').
+					then(function (response) {
+						responseData = response.data;
+						var gender = getGenderAverage(responseData);
+
+						var maleAvg = gender[1].data[0], femaleAvg = gender[0].data[0];
+						$scope.difference = Math.abs(maleAvg - femaleAvg);
+						$scope.percent = Math.floor(((maleAvg/femaleAvg)-1)*10000)/100;
+
+						var professions = [];
+						for(var i = 0, len = responseData.length; i<len; i++) {
+							var p = responseData[i].Profession;
+							if(p && p.length !== 0) {
+								professions.push(p);
+							}
+						}
+						$scope.professions = professions;
+
+						setConfig(responseData);
+					}, function (error) {
+
+
+					});
+			}else{
+				setConfig(responseData);
+			}
+
+		};
 
 		$scope.chartChange = function() {
 			$scope.generateChart($scope.chartOption);
