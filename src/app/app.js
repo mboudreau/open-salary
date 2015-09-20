@@ -74,10 +74,26 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 
 		$scope.chartConfig = chartConfig;
 
+		var ethnicChart, genderChart;
+
 		$http.get('http://localhost:8000').
 			then(function (response) {
 				var data = response.data;
-				// TODO: calculate data here
+				var gender = getGenderAverage(data);
+
+				var maleAvg = gender[1].data[0], femaleAvg = gender[0].data[0];
+				$scope.difference = Math.abs(maleAvg - femaleAvg);
+				$scope.percent = Math.floor(((maleAvg/femaleAvg)-1)*10000)/100;
+
+				var professions = [];
+				for(var i = 0, len = data.length; i<len; i++) {
+					var p = data[i].Profession;
+					if(p && p.length !== 0) {
+						professions.push(p);
+					}
+				}
+				$scope.professions = professions;
+
 				$scope.chartConfig = angular.extend(chartConfig, {
 					loading: false,
 					//series: getGenderAverage(data)
