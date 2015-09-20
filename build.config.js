@@ -71,7 +71,11 @@ module.exports = {
 			'vendor/angular/angular.js',
 			'vendor/angular-ui-router/release/angular-ui-router.js',
 			'vendor/satellizer/satellizer.js',
-			'vendor/highcharts-ng/dist/highcharts-ng.js'
+			'vendor/highcharts-ng/dist/highcharts-ng.js',
+			'vendor/angular-bootstrap/src/buttons/buttons.js',
+			'vendor/angular-bootstrap/src/bindHtml/bindHtml.js',
+			'vendor/angular-bootstrap/src/position/position.js',
+			'vendor/angular-bootstrap/src/typeahead/typeahead.js'
 		],
 		css: [
 		],
@@ -84,6 +88,7 @@ module.exports = {
 				},
 				src: [
 					'vendor/angular-bootstrap/template/tabs/*.html',
+					'vendor/angular-bootstrap/template/typeahead/*.html',
 					'vendor/angular-bootstrap/template/modal/*.html'
 				]
 			}

@@ -36,12 +36,11 @@
 						<h1>Open Salary</h1>
 
 						<div class="well">
-							women make {{difference | currency:'$':0}}({{percent}}%) less than men per year
+							Women make {{difference | currency:'$':0}}({{percent}}%) less than men per year
 						</div>
 						<form class="form-inline">
 							<div id="searchField">
-								<input type="text" class="form-control" id="FirstName" placeholder="How did you do?"
-								       max="150">
+								<input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control" placeholder="How did you do?">
 							</div>
 						</form>
 					</div>
@@ -54,33 +53,27 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-4">
 						<h3>Equality</h3>
-
-						<p>"National gender pay gap rises to 18.2%"</p>
+						<p>"National gender pay gap<br class="visible-md visible-lg"/>rises to 18.2%"</p>
 					</div>
 					<div class="col-xs-12 col-sm-4">
 						<h3>Diversity</h3>
-
 						<p>"Businesses that show they truly value diversity promote equality payments"</p>
 					</div>
 					<div class="col-xs-12 col-sm-4">
 						<h3>Open Mind</h3>
-
-						<p>"Salary - Get a salary comparison based on your job"</p>
+						<p>"Get a salary comparison based on your job"</p>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div id="div-chart">
+		<div id="chart">
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-12-">
-						<div class="dropdown">
-							<select id="chartSelection" class="form-control" ng-model="chartOption"
-							        ng-change="chartChange()">
-								<option value="1" selected="true">Average Salary By Gender</option>
-								<option value="2">Average Salary By Ethnicity</option>
-							</select>
+					<div class="col-xs-12">
+						<div class="btn-group" ng-init="chartType='gender'">
+							<label class="btn btn-default" ng-model="chartType" btn-radio="'gender'" ng-click="generateChart('gender')">Avg. Salary by Gender</label>
+							<label class="btn btn-default" ng-model="chartType" btn-radio="'ethnicity'" ng-click="generateChart('ethnicity')">Avg. Salary by Ethnicity</label>
 						</div>
 					</div>
 				</div>

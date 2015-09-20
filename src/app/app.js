@@ -1,6 +1,6 @@
 /*global angular */
 
-angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'])
+angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add', 'templates-bootstrap', 'ui.bootstrap.buttons', 'ui.bootstrap.typeahead'])
 	.config(function ($urlRouterProvider, $stateProvider, highchartsNGProvider) {
 		highchartsNGProvider.lazyLoad();
 		$urlRouterProvider.otherwise('/');
@@ -12,11 +12,9 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 	})
 	.controller('AppCtrl', function ($scope, $http) {
 
-		$scope.chartOption = 1;
-
 		var chartConfig = {}, responseData;
 
-		$scope.generateChart = function(option) {
+		$scope.generateChart = function(type) {
 			chartConfig = {
 
 				options: {
@@ -45,9 +43,6 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 						data: [80000]
 					}
 				],*/
-				title: {
-					text: getChartTitle($scope.chartOption)
-				},
 				loading: true,
 				//Configuration for the xAxis (optional). Currently only one x axis can be dynamically controlled.
 				//properties currentMin and currentMax provied 2-way binding to the chart's maximimum and minimum
@@ -77,11 +72,23 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 				}
 			};
 
-			function setConfig(data) {
+			function setConfig() {
+				var data, title;
+				switch(type) {
+					case 'gender':
+						title = 'Average Salary per Gender';
+						data = getGenderAverage(responseData);
+						break;
+					case 'ethnicity':
+						title = 'Average Salary per Ethnicity';
+						data =  getEthnicAverage(responseData);
+				}
 				$scope.chartConfig = angular.extend(chartConfig, {
 					loading: false,
-					//series: getGenderAverage(data)
-					series: getChartData(data, $scope.chartOption)
+					title: {
+						text: title
+					},
+					series: data
 				});
 			}
 
@@ -104,42 +111,20 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 						}
 						$scope.professions = professions;
 
-						setConfig(responseData);
+						setConfig();
 					}, function (error) {
 
 
 					});
 			}else{
-				setConfig(responseData);
+				setConfig();
 			}
 
 		};
 
-		$scope.chartChange = function() {
-			$scope.generateChart($scope.chartOption);
-	 	};
-
-		$scope.generateChart($scope.chartOption);
+		$scope.generateChart('gender');
 
 	});
-
-function getChartTitle(option) {
-	if (option == 1) {
-		return 'Average Salary per Gender';
-	}
-	if (option == 2) {
-		return 'Average Salary per Ethnicity';
-	}
-}
-
-function getChartData(data, option) {
-	if(option == 1) {
-		return getGenderAverage(data);
-	}
-	if(option == 2) {
-		return getEthnicAverage(data);
-	}
-}
 
 function getGenderAverage(data) {
 	var femaleTotal = 0, maleTotal = 0, maleCount = 0, femaleCount = 0;
