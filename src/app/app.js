@@ -162,11 +162,35 @@ function getGenderAverage(data) {
 
 	return [{
 		name: 'Female',
-		data: [Math.floor(femaleTotal/femaleCount)]
+		data: [Math.floor(femaleTotal/femaleCount)],
+		dataLabels: {
+	      enabled: true,
+	      // rotation: -90,
+	      color: '#FFFFFF',
+	      align: 'right',
+	      format: '{point.y:.0f}',
+	      y: 30, // 10 pixels down from the top
+	      style: {
+	          fontSize: '13px',
+	          fontFamily: 'Verdana, sans-serif'
+	      }
+	  }
 	},
 	{
 		name: 'Male',
-		data: [Math.floor(maleTotal/maleCount)]
+		data: [Math.floor(maleTotal/maleCount)],
+		dataLabels: {
+	      enabled: true,
+	      // rotation: -90,
+	      color: '#FFFFFF',
+	      align: 'right',
+	      format: '{point.y:.0f}',
+	      y: 30, // 10 pixels down from the top
+	      style: {
+	          fontSize: '13px',
+	          fontFamily: 'Verdana, sans-serif'
+	      }
+	  }
 	}];
 
 }
@@ -192,7 +216,21 @@ function getEthnicAverage(data) {
 	var series = [];
 
 	for(var key in ethnicities) {
-		series.push({name: key, data: [Math.floor(ethnicities[key].total/ethnicities[key].count)]})
+		series.push({name: key,
+			data: [Math.floor(ethnicities[key].total/ethnicities[key].count)],
+			dataLabels: {
+					enabled: true,
+					// rotation: -90,
+					color: '#FFFFFF',
+					align: 'right',
+					format: '{point.y:.0f}',
+					y: 30, // 10 pixels down from the top
+					style: {
+							fontSize: '13px',
+							fontFamily: 'Verdana, sans-serif'
+					}
+			}
+		})
 	}
 
 	return series;
