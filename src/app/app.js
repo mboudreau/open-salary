@@ -24,25 +24,12 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 						type: 'column'
 					},
 					tooltip: {
-						style: {
-							padding: 10,
-							fontWeight: 'bold'
-						}
+						enabled: false
 					}
 				},
 				//The below properties are watched separately for changes.
 
 				//Series object (optional) - a list of series using normal highcharts series options.
-				/*series: [
-					{
-						name: 'Female',
-						data: [60000]
-					},
-					{
-						name: 'Male',
-						data: [80000]
-					}
-				],*/
 				loading: true,
 				//Configuration for the xAxis (optional). Currently only one x axis can be dynamically controlled.
 				//properties currentMin and currentMax provied 2-way binding to the chart's maximimum and minimum
@@ -56,19 +43,6 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 					title: {
 						text: 'Salary'
 					}
-				},
-
-				tooltip: {
-					formatter: function() {
-						return '<b>'+ this.x +'</b><br/>'+
-							this.series.name +': '+ this.y +'<br/>'+
-							'Diff: '+ Math.abs(this.point.stackTotal-this.y);
-					}
-				},
-				//Whether to use HighStocks instead of HighCharts (optional). Defaults to false.
-				//function (optional)
-				func: function (chart) {
-					//setup some logic for the chart
 				}
 			};
 
@@ -153,11 +127,11 @@ function getGenderAverage(data) {
 	      // rotation: -90,
 	      color: '#FFFFFF',
 	      align: 'right',
-	      format: '{point.y:.0f}',
+	      format: '${point.y:.0f}',
 	      y: 30, // 10 pixels down from the top
 	      style: {
 	          fontSize: '13px',
-	          fontFamily: 'Verdana, sans-serif'
+	          fontFamily: 'Open Sans, sans-serif'
 	      }
 	  }
 	},
@@ -169,11 +143,11 @@ function getGenderAverage(data) {
 	      // rotation: -90,
 	      color: '#FFFFFF',
 	      align: 'right',
-	      format: '{point.y:.0f}',
+	      format: '${point.y:.0f}',
 	      y: 30, // 10 pixels down from the top
 	      style: {
 	          fontSize: '13px',
-	          fontFamily: 'Verdana, sans-serif'
+	          fontFamily: 'Open Sans, sans-serif'
 	      }
 	  }
 	}];
@@ -208,11 +182,11 @@ function getEthnicAverage(data) {
 					// rotation: -90,
 					color: '#FFFFFF',
 					align: 'right',
-					format: '{point.y:.0f}',
+					format: '${point.y:.0f}',
 					y: 30, // 10 pixels down from the top
 					style: {
 							fontSize: '13px',
-							fontFamily: 'Verdana, sans-serif'
+							fontFamily: 'Open Sans, sans-serif'
 					}
 			}
 		})
