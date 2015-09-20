@@ -88,6 +88,49 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 					});
 				}, function (error) {
 
+<<<<<<< HEAD
+=======
+			tooltip: {
+				formatter: function() {
+					return '<b>'+ this.x +'</b><br/>'+
+						this.series.name +': '+ this.y +'<br/>'+
+						'Diff: '+ Math.abs(this.point.stackTotal-this.y);
+				}
+			},
+			//Whether to use HighStocks instead of HighCharts (optional). Defaults to false.
+			//function (optional)
+			func: function (chart) {
+				//setup some logic for the chart
+			}
+		};
+
+		$scope.chartConfig = chartConfig;
+
+		var ethnicChart, genderChart;
+
+		$http.get('http://localhost:8000').
+			then(function (response) {
+				var data = response.data;
+				var gender = getGenderAverage(data);
+
+				var maleAvg = gender[1].data[0], femaleAvg = gender[0].data[0];
+				$scope.difference = Math.abs(maleAvg - femaleAvg);
+				$scope.percent = Math.floor(((maleAvg/femaleAvg)-1)*10000)/100;
+
+				var professions = [];
+				for(var i = 0, len = data.length; i<len; i++) {
+					var p = data[i].Profession;
+					if(p && p.length !== 0) {
+						professions.push(p);
+					}
+				}
+				$scope.professions = professions;
+
+				$scope.chartConfig = angular.extend(chartConfig, {
+					loading: false,
+					//series: getGenderAverage(data)
+					series: getEthnicAverage(data)
+>>>>>>> 9e3f2a59485f51d12e4a2173c0025f03a3255561
 				});
 		}
 

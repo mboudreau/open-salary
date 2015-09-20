@@ -27,6 +27,7 @@
 	<div id="main" ui-view>
 
 		<div class="header">
+<<<<<<< HEAD
 	      <a href="#" class="btn"><h4>Sign Up</h4></a>
 	      <a href="#" class="btn"><h4>Sign In</h4></a>
 	      <div class="container">
@@ -102,11 +103,86 @@
       </div>
     </div>
     </div>
+=======
+			<a href="#" class="btn"><h4>Sign Up</h4></a>
+			<a href="#" class="btn"><h4>Sign In</h4></a>
+
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<h1>Open Salary</h1>
+
+						<div class="well">
+							women make {{difference | currency:'$':0}}({{percent}}%) less than men per year
+						</div>
+						<form class="form-inline">
+							<div id="searchField">
+								<input type="text" class="form-control" id="FirstName" placeholder="How did you do?"
+								       max="150">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="jumbotron quotes">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4">
+						<h3>Equality</h3>
+
+						<p>"National gender pay gap rises to 18.2%"</p>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<h3>Diversity</h3>
+
+						<p>"Businesses that show they truly value diversity promote equality payments"</p>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<h3>Open Mind</h3>
+
+						<p>"Salary - Get a salary comparison based on your job"</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="div-chart">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<div highchart id="salaries" config="chartConfig" class="chart"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form" id="search-form">
+			<iframe src="https://opensalary.typeform.com/to/PYLdZY" width="100%" height="100%"></iframe>
+		</div>
+
+		<div class="footer">
+			<div class="container">
+				<address>
+					<strong>Open Salary</strong>
+					<br/>
+					Melbourne, Australia
+
+				</address>
+				<a href="#"><img
+						src="https://s3.amazonaws.com/codecademy-content/projects/headlines/email.svg"/></a>
+				<a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/fb.svg"/></a>
+				<a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/twitter.svg"/></a>
+			</div>
+		</div>
+	</div>
+>>>>>>> 9e3f2a59485f51d12e4a2173c0025f03a3255561
 </div>
 
-	<% scripts.forEach( function ( file ) { %>
-	<script type="text/javascript" src="<%= file %>?t=<%= timestamp %>"></script>
-	<% }); %>
+<% scripts.forEach( function ( file ) { %>
+<script type="text/javascript" src="<%= file %>?t=<%= timestamp %>"></script>
+<% }); %>
 </div>
 
 </body>

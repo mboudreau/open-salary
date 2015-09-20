@@ -40,7 +40,7 @@
 //@import '../../vendor/bootstrap/less/media';
 @import '../../vendor/bootstrap/less/list-group';
 @import '../../vendor/bootstrap/less/panels';
-//@import '../../vendor/bootstrap/less/wells';
+@import '../../vendor/bootstrap/less/wells';
 //@import '../../vendor/bootstrap/less/close';
 // Components w/ JavaScript
 //@import '../../vendor/bootstrap/less/modals';
@@ -56,7 +56,9 @@ html, body {
 	padding: 0;
 	font-family: 'Open Sans', sans-serif;
 }
-
+input, textarea, select, button {
+  box-sizing: border-box;
+}
 .container {
 	max-width: 980px;
 	margin: 0 auto;
@@ -67,73 +69,88 @@ html, body {
 	background-size: cover;
 	height: 500px;
 	text-align: center;
-	z-index: 2;
+	//z-index: 2;
+
+	.container {
+		padding: 30px 0;
+	}
 
 	h1 {
-		color: #83B8C9;
-		line-height: 100px;
-		font-size: 80px;
-		font-weight: bold;
-		margin-top: 60px;
+		color: #FFF;
+		font-size: 104px;
+		margin-top:0;
+		margin-bottom: 40px;
 		font-family: 'Dancing Script', sans-serif;
+		text-shadow: 1px 1px 0 #111;
 	}
-   h4{
-  	text-align: right; 
-  	padding-right:10px;
-  }
+	h4 {
+		text-align: right;
+		padding-right: 10px;
+	}
 
-   p {
-  color:#4F727D;
-  font-weight: 500;
-  margin-bottom: 40px;
-  margin-top: 0;
-  font-size: 40px;
-  text-transform: uppercase;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
- }
+	.well {
+		font-size: 40px;
+		color:#fff;
+		font-style: italic;
+		text-shadow: 1px 1px 0 #111;
+		margin-bottom:40px;
+		padding: 10px;
+		background: rgba(0, 0, 0, 0.25);
+		border: none;
+		.lh-box-shadow(none);
+	}
 }
+
 .login h3 {
 	float: right;
 }
 
-
-.row{
-  position: relative; 
-  text-align: center;
-  padding:20px;
+.quotes {
+	.row {
+		position: relative;
+		text-align: center;
+		padding: 20px;
+	}
 }
 
 .btn {
 	color: #000;
-	float:right;
-	padding-right:10px;
+	float: right;
+	padding-right: 10px;
 	text-decoration: none;
 }
 
 #searchField i {
 	width: 30px;
 	height: 30px;
-	color:#83B8C9;
+	color: #83B8C9;
 	text-decoration: none;
 }
 
 #div-chart {
+	//height: 300px;
+	background: #000;
 
-  height: 300px;
-  background:#000;
+	h1 {
+		color: #83B8C9;
+		line-height: 100px;
+		font-size: 40px;
+		text-align: center;
+	}
 }
-
-#div-chart h1{ 
-  color: #83B8C9;
-  line-height: 100px; 
-  font-size: 40px;
-  text-align: center;
-}
-
 
 #search-form {
-  height: 500px;
+	height: 500px;
+
+.form {
+  height: 800px;
+  padding:0px;
+  border:0;
+}
+
+#search-form {
+  height: 800px;
+  text-align: center;
 }
 #search-form  h1{
   color: #83B8C9;
@@ -142,12 +159,12 @@ html, body {
   text-align: center;
 }
 
-.learn-more{
-  color: #fff;
-  background: #000;
-  padding: 10px 40px;
-  text-decoration: none; 
-  transition: background .5s; 
+.learn-more {
+	color: #fff;
+	background: #000;
+	padding: 10px 40px;
+	text-decoration: none;
+	transition: background .5s;
 }
 
 .learn-more:hover {
@@ -163,12 +180,11 @@ html, body {
 	text-align: center;
 }
 
-
-.jumbotron h3{
-   color: #83B8C9;
-   font-size:30px;
-  font-weight: bold; 
-   margin-top: 0;
+.jumbotron h3 {
+	color: #83B8C9;
+	font-size: 30px;
+	font-weight: bold;
+	margin-top: 0;
 }
 
 .jumbotron span {
