@@ -1,6 +1,6 @@
 /*global angular */
 
-angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add', 'data-service'])
+angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'])
 	.config(function ($urlRouterProvider, $stateProvider, highchartsNGProvider) {
 		highchartsNGProvider.lazyLoad();
 		$urlRouterProvider.otherwise('/');
@@ -10,7 +10,7 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 			controller: 'AppCtrl'
 		});
 	})
-	.controller('AppCtrl', function ($scope, $http, dataService) {
+	.controller('AppCtrl', function ($scope, $http) {
 
 		var chartConfig = {
 
@@ -30,7 +30,7 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 			//The below properties are watched separately for changes.
 
 			//Series object (optional) - a list of series using normal highcharts series options.
-			series: [
+			/*series: [
 				{
 					name: 'Female',
 					data: [60000]
@@ -39,7 +39,7 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 					name: 'Male',
 					data: [80000]
 				}
-			],
+			],*/
 			title: {
 				text: 'Average Salary per Gender'
 			},
@@ -52,9 +52,17 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 				}
 			},
 			yAxis: {
-				min: 0,
+				min: 60000,
 				title: {
 					text: 'Salary'
+				}
+			},
+
+			tooltip: {
+				formatter: function() {
+					return '<b>'+ this.x +'</b><br/>'+
+						this.series.name +': '+ this.y +'<br/>'+
+						'Diff: '+ Math.abs(this.point.stackTotal-this.y);
 				}
 			},
 			//Whether to use HighStocks instead of HighCharts (optional). Defaults to false.
@@ -74,15 +82,40 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 					loading: false,
 					series: getGenderAverage(data)
 				});
-			}, function(error){
+			}, function (error) {
 
 			});
 
 	});
 
 function getGenderAverage(data) {
+	var femaleTotal = 0, maleTotal = 0, maleCount = 0, femaleCount = 0;
 
-	return data;
+	for(var i = 0, len = data.length; i<len; i++) {
+		var answer = data[i];
+		if(answer.YearSalary) {
+			switch(answer.Gender) {
+				case 'Male':
+					maleCount++;
+					maleTotal += parseInt(answer.YearSalary);
+					break;
+				case 'Female':
+					femaleCount++;
+					femaleTotal += parseInt(answer.YearSalary);
+					break;
+			}
+		}
+	}
+
+	return [{
+		name: 'Female',
+		data: [Math.floor(femaleTotal/femaleCount)]
+	},
+	{
+		name: 'Male',
+		data: [Math.floor(maleTotal/maleCount)]
+	}];
+
 }
 
 
