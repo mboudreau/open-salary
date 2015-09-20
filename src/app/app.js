@@ -80,7 +80,8 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 				// TODO: calculate data here
 				$scope.chartConfig = angular.extend(chartConfig, {
 					loading: false,
-					series: getGenderAverage(data)
+					//series: getGenderAverage(data)
+					series: getEthnicAverage(data)
 				});
 			}, function (error) {
 
@@ -118,4 +119,31 @@ function getGenderAverage(data) {
 
 }
 
+function getEthnicAverage(data) {
+	var ethnicities = {};
 
+	for(var i = 0, len = data.length; i<len; i++) {
+		var answer = data[i];
+			if(answer.YearSalary) {
+				if(!ethnicities[answer.Ethnicity]) {
+					ethnicities[answer.Ethnicity] = {
+						total:0,
+						count:0
+					};
+				}
+
+				ethnicities[answer.Ethnicity].total = ethnicities[answer.Ethnicity].total + parseInt(answer.YearSalary);
+				ethnicities[answer.Ethnicity].count = ethnicities[answer.Ethnicity].count + 1;
+			}
+	}
+
+	var series = [];
+
+	for(var key in ethnicities) {
+		series.push({name: key, data: [Math.floor(ethnicities[key].total/ethnicities[key].count)]})
+	}
+
+	console.info(JSON.stringify(series));
+
+	return series;
+}

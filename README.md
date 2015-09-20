@@ -11,7 +11,7 @@ This will install [Grunt](http://gruntjs.com/), [Bower](http://bower.io/) and [P
 
     npm install
     bower install
-    
+
     Note: If 'bower install' is not found, you will need to copy the following from your user PATH to the global PATH environment variable: 'C:\Users\{your_username_here}\AppData\Roaming\npm;'
 
 This will install project specific dependencies.  Every time a dependency is changed, remember to do both.  If you don't, an error will occur during the build process.
