@@ -39,8 +39,10 @@
 							Women make {{difference | currency:'$':0}}({{percent}}%) less than men per year
 						</div>
 						<form class="form-inline">
-							<div id="searchField">
-								<input type="text" ng-model="selected" typeahead="profession for profession in professions | filter:$viewValue | limitTo:8" class="form-control" placeholder="How did you do?">
+							<div id="searchField" class="row">
+								<input type="text" ng-model="selected"
+								       typeahead="profession for profession in professions | filter:$viewValue | limitTo:8"
+								       class="col-xs-6 col-xs-offset-3" placeholder="How did you do?">
 							</div>
 						</form>
 					</div>
@@ -53,14 +55,17 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-4">
 						<h3>Equality</h3>
+
 						<p>"National gender pay gap<br class="visible-md visible-lg"/>rises to 18.2%"</p>
 					</div>
 					<div class="col-xs-12 col-sm-4">
 						<h3>Diversity</h3>
+
 						<p>"Businesses that show they truly value diversity promote equality payments"</p>
 					</div>
 					<div class="col-xs-12 col-sm-4">
 						<h3>Open Mind</h3>
+
 						<p>"Get a salary comparison based on your job"</p>
 					</div>
 				</div>
@@ -68,14 +73,19 @@
 		</div>
 
 		<div id="chart">
+			<a name="#chart"></a>
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="btn-group" ng-init="chartType='gender'">
-							<label class="btn btn-default" ng-model="chartType" btn-radio="'gender'" ng-click="generateChart('gender')">Avg. Salary by Gender</label>
-							<label class="btn btn-default" ng-model="chartType" btn-radio="'ethnicity'" ng-click="generateChart('ethnicity')">Avg. Salary by Ethnicity</label>
-							<label class="btn btn-default" ng-model="chartType" btn-radio="'profession'" ng-click="generateChart('profession')">Avg. Salary by Profession</label>
-							<label class="btn btn-default" ng-model="chartType" btn-radio="'industry'" ng-click="generateChart('industry')">Avg. Salary by Industry</label>							
+							<label class="btn btn-default" ng-model="chartType" btn-radio="'gender'"
+							       ng-click="generateChart('gender')">Avg. Salary by Gender</label>
+							<label class="btn btn-default" ng-model="chartType" btn-radio="'ethnicity'"
+							       ng-click="generateChart('ethnicity')">Avg. Salary by Ethnicity</label>
+							<label class="btn btn-default" ng-model="chartType" btn-radio="'profession'"
+							       ng-click="generateChart('profession')">Avg. Salary by Profession</label>
+							<label class="btn btn-default" ng-model="chartType" btn-radio="'industry'"
+							       ng-click="generateChart('industry')">Avg. Salary by Industry</label>
 						</div>
 					</div>
 				</div>
