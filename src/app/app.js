@@ -39,7 +39,7 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 					}
 				},
 				yAxis: {
-					min: 60000,
+					min: 30000,
 					title: {
 						text: 'Salary'
 					}
@@ -56,10 +56,15 @@ angular.module('open-salary-app', ['ui.router', 'highcharts-ng', 'verify', 'add'
 					case 'ethnicity':
 						title = 'Average Salary per Ethnicity';
 						data =  getEthnicAverage(responseData);
-						break
+						break;
 					case 'profession':
 						title = 'Average Salary per Profession';
 						data =  getProfessionAverage(responseData);
+						break;
+					case 'industry':
+						title = 'Average Salary per Industry';
+						data =  getIndustryAverage(responseData);
+						break;
 				}
 				$scope.chartConfig = angular.extend(chartConfig, {
 					loading: false,
@@ -222,6 +227,47 @@ function getProfessionAverage(data) {
 	for(var key in professions) {
 		series.push({name: key,
 			data: [Math.floor(professions[key].total/professions[key].count)],
+			dataLabels: {
+					enabled: true,
+					// rotation: -90,
+					color: '#FFFFFF',
+					align: 'right',
+					format: '{point.y:.0f}',
+					y: 30, // 10 pixels down from the top
+					style: {
+							fontSize: '13px',
+							fontFamily: 'Verdana, sans-serif'
+					}
+			}
+		})
+	}
+
+	return series;
+}
+
+function getIndustryAverage(data) {
+	var industries = {};
+
+	for(var i = 0, len = data.length; i<len; i++) {
+		var answer = data[i];
+			if(answer.YearSalary > 0 && answer.Industry.length !== 0) {
+				if(!industries[answer.Industry]) {
+					industries[answer.Industry] = {
+						total:0,
+						count:0
+					};
+				}
+
+				industries[answer.Industry].total = industries[answer.Industry].total + parseInt(answer.YearSalary);
+				industries[answer.Industry].count = industries[answer.Industry].count + 1;
+			}
+	}
+
+	var series = [];
+
+	for(var key in industries) {
+		series.push({name: key,
+			data: [Math.floor(industries[key].total/industries[key].count)],
 			dataLabels: {
 					enabled: true,
 					// rotation: -90,

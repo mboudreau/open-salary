@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<testsuite name="PhantomJS 1.9.8 (Windows 8 0.0.0)" package="" timestamp="2015-09-20T04:28:12" id="0" hostname="WIN-GFMFHINQ637" tests="1" errors="0" failures="0" time="0.004">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34"/>
+  </properties>
+  <testcase name="should pass" time="0.004" classname="PhantomJS_1_9_8_(Windows_8_0_0_0).App"/>
+  <system-out>
+    <![CDATA[
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>
