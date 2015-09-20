@@ -42,15 +42,15 @@
 	                  </div>
 	                </form>
 	              </div>
-	         	</div>   
+	         	</div>
 	         </div>
 	      </div>
-         
-    
+
+
 
     <div class="jumbotron">
  		 <div class="container">
-			 <div class="row"> 
+			 <div class="row">
 	       	<div class="col-md-4">
 	       		<h3>Equality</h3>
 	       		<p>"National gender pay gap rises to 18.2%"</p>
@@ -67,9 +67,17 @@
  		</div>
     </div>
 
+		<div class="dropdown">
+			<select id ="chartSelection" class="form-control" ng-model="chartOption" ng-change="chartChange()">
+	      <option value="1" selected="true">Average Salary By Gender</option>
+	      <option value="2">Average Salary By Ethnicity</option>
+			</select>
+		</div>
+
     <div id="div-chart">
     	<div class="container">
     		<h1>Chart</h1>
+				<br/>
     		<div highchart id="salaries" config="chartConfig" class="chart"></div>
     	</div>
     </div>
@@ -86,7 +94,7 @@
           <strong>Open Salary</strong>
           <br/>
           Melbourne, Australia
-          
+
         </address>
         <a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/email.svg"/></a>
         <a href="#"><img src="https://s3.amazonaws.com/codecademy-content/projects/headlines/fb.svg"/></a>
